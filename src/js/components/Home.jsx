@@ -1,3 +1,4 @@
+//importo React y useState para usar los estados en el componente.
 import React, { useState } from "react";
 
 //include images into your bundle
@@ -5,22 +6,24 @@ import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
+	// creo una variable de estado(seleccionColor) y uso setSeleccionColor para cambiar el color al hacer clic.
 	const [seleccionColor, setSeleccionColor] = useState("red");
+	// otra variable de estado booleano (estado inicial false) para indicar si el púrpura debe mostrarse o no.
 	const [mostrarPurpura, setMostrarPurpura] = useState(false);
-
+	// Array con los colores. Si mostrarPuspura es true añade "purple" al array.
 	const cambioColor = () => {
-		const colores = ["red", "yellow", "green", mostrarPurpura && "purple"].filter(Boolean);
-		const indexActual = colores.indexOf(seleccionColor);
-		const siguienteIndex = (indexActual + 1) % colores.length;
-		setSeleccionColor(colores[siguienteIndex]);
+		const colores = ["red", "yellow", "green", mostrarPurpura && "purple"].filter(Boolean);// para eliminar false o undefined.
+		const indexActual = colores.indexOf(seleccionColor);// busco el indice del color actual en el array.
+		const siguienteIndex = (indexActual + 1) % colores.length; // sumo 1 al indice actual y uso % para que si llega al final vuelva al principio.
+		setSeleccionColor(colores[siguienteIndex]);//cambia al siguiente array.
 	};
-
+	
 	const añadirPurpura = () => {
 		setMostrarPurpura(true);
 	};
-
+	//Estructura del componente
 	return (
-		<>
+		<> 
 			<div className="baseSemaforo pt-5">
 				<div className="semaforo">
 					<div
